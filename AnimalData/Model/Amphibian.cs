@@ -1,6 +1,6 @@
 ﻿namespace AnimalData.Model
 {
-    internal class Amphibian : ChordalClass
+    internal class Amphibian : ChordalType
     {
     }
 }
