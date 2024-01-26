@@ -9,7 +9,7 @@ namespace AnimalData.ViewModel
 {
     internal class MainWindowViewModel
     {
-        private ChordalClass dsd = new Bird();
+        private ChordalType dsd = new Bird();
 
         public MainWindowViewModel()
         {
