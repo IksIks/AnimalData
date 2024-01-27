@@ -13,13 +13,13 @@ namespace AnimalData
         {
             InitializeComponent();
 
-            using (AnimalDBContext t = new AnimalDBContext())
-            {
-                t.ChordalClasses.Add(new Bird { AnimalName = "nvfdjvhjsdv", LifeExpectancy = 8, Weight = 7 });
-                t.ChordalClasses.Add(new Bird { AnimalName = "gggggg", LifeExpectancy = 4, Weight = 3 });
+            //using (AnimalDBContext t = new())
+            //{
+            //    t.ChordalTypes.Add(new Bird { AnimalName = "nvfdjvhjsdv", LifeExpectancy = 8, Weight = 7 });
+            //    t.ChordalTypes.Add(new Mammal { AnimalName = "gggggg", LifeExpectancy = 4, Weight = 3 });
 
-                t.SaveChanges();
-            }
+            //    t.SaveChanges();
+            //}
         }
     }
 }
