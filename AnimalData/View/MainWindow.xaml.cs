@@ -16,8 +16,8 @@ namespace AnimalData
             //    t.Mammals.Add(new Mammal { AnimalName = "Mammal", LifeExpectancy = 4, Weight = 3 });
             //    t.Amphibians.Add(new Amphibian { AnimalName = "Amphibian", LifeExpectancy = 4, Weight = 3 });
 
-            //    t.SaveChanges();
-            //}
+                t.SaveChanges();
+            }
         }
     }
 }
