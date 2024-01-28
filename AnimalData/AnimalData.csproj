@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <Folder Include="DataBase\" />
+    <Folder Include="DBQuery\" />
   </ItemGroup>
 
   <ItemGroup>
