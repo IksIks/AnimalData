@@ -1,13 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace AnimalData.Model
+﻿namespace AnimalData.Model
 {
     internal abstract class ChordalType
     {
         public int Id { get; set; }
 
-        public string AnimalName { get; set; }
+        public string? AnimalName { get; set; }
 
         public byte LifeExpectancy { get; set; }
 

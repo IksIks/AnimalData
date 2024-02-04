@@ -4,9 +4,6 @@ using System.Windows;
 
 namespace AnimalData
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -15,8 +12,9 @@ namespace AnimalData
 
             using (AnimalDBContext t = new())
             {
-                t.ChordalTypes.Add(new Bird { AnimalName = "nvfdjvhjsdv", LifeExpectancy = 8, Weight = 7 });
-                t.ChordalTypes.Add(new Mammal { AnimalName = "gggggg", LifeExpectancy = 4, Weight = 3 });
+                t.Birds.Add(new Bird { AnimalName = "Bird", LifeExpectancy = 8, Weight = 7 });
+                t.Mammals.Add(new Mammal { AnimalName = "Mammal", LifeExpectancy = 4, Weight = 3 });
+                t.Amphibians.Add(new Amphibian { AnimalName = "Amphibian", LifeExpectancy = 4, Weight = 3 });
 
                 t.SaveChanges();
             }

@@ -16,7 +16,9 @@ namespace AnimalData.DBContext
         {
         }
 
-        public virtual DbSet<ChordalType> ChordalTypes { get; set; }
+        public virtual DbSet<Amphibian> Amphibians { get; set; }
+        public virtual DbSet<Bird> Birds { get; set; }
+        public virtual DbSet<Mammal> Mammals { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
              => optionsBuilder.UseNpgsql(ConnectString.GetConnectionString());
@@ -24,7 +26,6 @@ namespace AnimalData.DBContext
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            // modelBuilder.ApplyConfiguration<ChordalTypeConfig>(new ChordalTypeConfig());
             new ChordalTypeConfig().Configure(modelBuilder.Entity<ChordalType>());
         }
     }
