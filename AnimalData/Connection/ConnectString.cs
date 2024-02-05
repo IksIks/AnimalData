@@ -25,7 +25,7 @@ namespace AnimalData.Connection
             finally
             {
                 if (String.IsNullOrEmpty(returnableString))
-                    Application.Current.Shutdown();
+                Application.Current.Shutdown();
             }
         }
     }
