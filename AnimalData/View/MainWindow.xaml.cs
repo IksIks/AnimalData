@@ -10,11 +10,11 @@ namespace AnimalData
         {
             InitializeComponent();
 
-            //using (AnimalDBContext t = new())
-            //{
-            //    t.Birds.Add(new Bird { AnimalName = "Bird", LifeExpectancy = 8, Weight = 7 });
-            //    t.Mammals.Add(new Mammal { AnimalName = "Mammal", LifeExpectancy = 4, Weight = 3 });
-            //    t.Amphibians.Add(new Amphibian { AnimalName = "Amphibian", LifeExpectancy = 4, Weight = 3 });
+            using (AnimalDBContext t = new())
+            {
+                t.TableAnimals.Add(new Bird { AnimalName = "Bird", LifeExpectancy = 8, Weight = 7 });
+                t.TableAnimals.Add(new Mammal { AnimalName = "Mammal", LifeExpectancy = 4, Weight = 3 });
+                t.TableAnimals.Add(new Amphibian { AnimalName = "Amphibian", LifeExpectancy = 4, Weight = 3 });
 
                 t.SaveChanges();
             }

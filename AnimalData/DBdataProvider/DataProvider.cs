@@ -1,5 +1,6 @@
 ﻿using AnimalData.DBContext;
 using AnimalData.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace AnimalData.DBdataProvider
 {
@@ -11,13 +12,11 @@ namespace AnimalData.DBdataProvider
         {
         }
 
-        public Task<ICollection<ChordalType>> GetDataFromDB(ChordalType chordalType)
-        {
-            using (dbContext = new AnimalDBContext())
-            {
-                var entity = dbContext.Entry<ChordalType>(chordalType);
-                return dbContext.
-            }
-        }
+        //public Task<ICollection<ChordalType>> GetDataFromDB()
+        //{
+        //    dbContext.Mammals.ToList();
+        //    dbContext.Amphibians.ToList();
+        //    dbContext.Birds.ToList();
+        //}
     }
 }

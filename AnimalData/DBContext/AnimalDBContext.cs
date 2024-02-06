@@ -1,6 +1,7 @@
 ﻿using AnimalData.ConfigurationDB;
 using AnimalData.Connection;
 using AnimalData.Model;
+using AnimalData.Model.BaseClass;
 using Microsoft.EntityFrameworkCore;
 
 namespace AnimalData.DBContext
@@ -16,9 +17,7 @@ namespace AnimalData.DBContext
         {
         }
 
-        public virtual DbSet<Amphibian> Amphibians { get; set; }
-        public virtual DbSet<Bird> Birds { get; set; }
-        public virtual DbSet<Mammal> Mammals { get; set; }
+        public virtual DbSet<TableAnimal> TableAnimals { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
              => optionsBuilder.UseNpgsql(ConnectString.GetConnectionString());
@@ -26,7 +25,7 @@ namespace AnimalData.DBContext
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            new ChordalTypeConfig().Configure(modelBuilder.Entity<ChordalType>());
+            new TableAnimalConfig().Configure(modelBuilder.Entity<TableAnimal>());
         }
     }
 }

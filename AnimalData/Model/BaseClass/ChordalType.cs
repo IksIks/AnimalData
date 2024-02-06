@@ -1,4 +1,4 @@
-﻿namespace AnimalData.Model
+﻿namespace AnimalData.Model.BaseClass
 {
     internal abstract class ChordalType
     {

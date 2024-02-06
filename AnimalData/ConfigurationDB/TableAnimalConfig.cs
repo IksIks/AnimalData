@@ -1,12 +1,12 @@
-﻿using AnimalData.Model;
+﻿using AnimalData.Model.BaseClass;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace AnimalData.ConfigurationDB
 {
-    internal class ChordalTypeConfig : IEntityTypeConfiguration<ChordalType>
+    internal class TableAnimalConfig : IEntityTypeConfiguration<TableAnimal>
     {
-        public void Configure(EntityTypeBuilder<ChordalType> builder)
+        public void Configure(EntityTypeBuilder<TableAnimal> builder)
         {
             builder.Property(a => a.Id).IsRequired().HasColumnName("id");
             builder.Property(a => a.AnimalName).IsRequired().HasColumnName("animal_name");

@@ -1,5 +1,5 @@
 ﻿using AnimalData.DBdataProvider;
-using AnimalData.Model;
+using AnimalData.Model.BaseClass;
 using System.Collections.ObjectModel;
 
 namespace AnimalData.ViewModel
@@ -11,6 +11,7 @@ namespace AnimalData.ViewModel
         public MainWindowViewModel()
         {
             DataProvider t = new DataProvider();
+            //AnimalTypes = new ObservableCollection<ChordalType>(t.GetDataFromDB());
         }
     }
 }

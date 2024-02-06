@@ -1,6 +1,8 @@
-﻿namespace AnimalData.Model
+﻿using AnimalData.Model.BaseClass;
+
+namespace AnimalData.Model
 {
-    internal class Mammal : ChordalType
+    internal class Mammal : TableAnimal
     {
     }
 }
