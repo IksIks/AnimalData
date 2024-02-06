@@ -11,9 +11,9 @@ namespace AnimalData.DBdataProvider
         {
         }
 
-        public ICollection<TableAnimal> GetDataFromDB()
+        public async Task<ICollection<TableAnimal>> GetDataFromDB()
         {
-            return dbContext.TableAnimals.ToList();
+            return await Task.Run(() => dbContext.TableAnimals.ToList());
         }
     }
 }

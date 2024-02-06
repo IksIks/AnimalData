@@ -4,7 +4,7 @@ using System.Windows;
 
 namespace AnimalData.Connection
 {
-    internal class ConnectString
+    internal static class ConnectString
     {
         public static string GetConnectionString()
         {
@@ -25,7 +25,7 @@ namespace AnimalData.Connection
             finally
             {
                 if (String.IsNullOrEmpty(returnableString))
-                Application.Current.Shutdown();
+                    Application.Current.Shutdown();
             }
         }
     }

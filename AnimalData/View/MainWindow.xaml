@@ -5,7 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AnimalData"
         xmlns:vm="clr-namespace:AnimalData.ViewModel"
-
         Title="MainWindow" MaxHeight="450" MaxWidth="800" MinHeight="450" MinWidth="800">
     <Window.DataContext>
         <vm:MainWindowViewModel />
@@ -13,7 +12,7 @@
     <DockPanel Background="Beige">
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Меню">
-                <MenuItem Header="Загрузить БД" />
+                <MenuItem Header="Загрузить БД" Command="{Binding GetDataFromDBCommand}" />
             </MenuItem>
             <MenuItem Header="Опции">
                 <MenuItem Header="Сохранить как..." />
@@ -38,7 +37,7 @@
                 <Button Content="Изменить данные" Margin="0,0,0,10" />
             </UniformGrid>
             <DataGrid Grid.Column="1" Background="Beige" ItemsSource="{Binding AnimalTypes}" AutoGenerateColumns="False" FrozenColumnCount="4"
-                      SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" ColumnWidth="*">
+                      SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" ColumnWidth="*" IsReadOnly="True">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Id" Binding="{Binding Id}" />
                     <DataGridTextColumn Header="Название животного" Binding="{Binding AnimalName}" />
