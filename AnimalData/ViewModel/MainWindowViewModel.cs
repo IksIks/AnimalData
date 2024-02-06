@@ -11,7 +11,7 @@ namespace AnimalData.ViewModel
         public MainWindowViewModel()
         {
             DataProvider t = new DataProvider();
-            //AnimalTypes = new ObservableCollection<ChordalType>(t.GetDataFromDB());
+            AnimalTypes = new ObservableCollection<ChordalType>(t.GetDataFromDB());
         }
     }
 }
