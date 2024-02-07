@@ -11,6 +11,9 @@ namespace AnimalData.Connection
             string returnableString = default;
             IConfigurationRoot configaration;
             var builder = new ConfigurationBuilder();
+            //configaration = builder.SetBasePath(Directory.GetCurrentDirectory() + "\\Connection").AddJsonFile("Connection.json").Build();
+            //returnableString = configaration.GetConnectionString("PGSQL");
+            //return returnableString;
             try
             {
                 configaration = builder.SetBasePath(Directory.GetCurrentDirectory() + "\\Connection").AddJsonFile("Connection.json").Build();

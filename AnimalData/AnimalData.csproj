@@ -20,16 +20,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Connection\Connection.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Connection\Connection.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Connection\Connection.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 </Project>

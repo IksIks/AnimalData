@@ -5,7 +5,7 @@ namespace AnimalData.DBdataProvider
 {
     internal class DataProvider
     {
-        private AnimalDBContext dbContext = new();
+        private AnimalDBContext? dbContext;
 
         public DataProvider()
         {
@@ -13,7 +13,10 @@ namespace AnimalData.DBdataProvider
 
         public async Task<ICollection<TableAnimal>> GetDataFromDB()
         {
-            return await Task.Run(() => dbContext.TableAnimals.ToList());
+            using (dbContext = new AnimalDBContext())
+            {
+                return await Task.Run(() => dbContext.TableAnimals.ToList());
+            }
         }
     }
 }

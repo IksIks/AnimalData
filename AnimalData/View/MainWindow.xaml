@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AnimalData"
         xmlns:vm="clr-namespace:AnimalData.ViewModel"
-        Title="MainWindow" MaxHeight="450" MaxWidth="800" MinHeight="450" MinWidth="800">
+        Title="Животные" MaxHeight="450" MaxWidth="800" MinHeight="450" MinWidth="800">
     <Window.DataContext>
         <vm:MainWindowViewModel />
     </Window.DataContext>
@@ -21,8 +21,8 @@
         <StatusBar DockPanel.Dock="Bottom" Background="LightGray">
             <StatusBarItem>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="База клиентов" Foreground="DarkBlue" />
-                    <Ellipse Height="10" Stroke="Black" Width="10" Fill="{Binding ClienDBColorStatus}" Margin="2,2,0,0" />
+                    <TextBlock Text="База данных животных" Foreground="DarkBlue" />
+                    <Ellipse Height="10" Stroke="Black" Width="10" Fill="{Binding ConnectionState}" Margin="2,2,0,0" />
                 </StackPanel>
             </StatusBarItem>
         </StatusBar>
@@ -37,10 +37,10 @@
                 <Button Content="Изменить данные" Margin="0,0,0,10" />
             </UniformGrid>
             <DataGrid Grid.Column="1" Background="Beige" ItemsSource="{Binding AnimalTypes}" AutoGenerateColumns="False" FrozenColumnCount="4"
-                      SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" ColumnWidth="*" IsReadOnly="True">
+                      SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Id" Binding="{Binding Id}" />
-                    <DataGridTextColumn Header="Название животного" Binding="{Binding AnimalName}" />
+                    <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="50" />
+                    <DataGridTextColumn Header="Название животного" Binding="{Binding AnimalName}" Width="250" />
                     <DataGridTextColumn Header="Срок жизни" Binding="{Binding LifeExpectancy}" />
                     <DataGridTextColumn Header="Вес" Binding="{Binding Weight}" />
                 </DataGrid.Columns>
