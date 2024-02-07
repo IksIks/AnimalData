@@ -3,17 +3,17 @@ using AnimalData.Model.BaseClass;
 
 namespace AnimalData.DBdataProvider
 {
-    internal class DataProvider
+    internal class DBProvider
     {
-        private AnimalDBContext dbContext = new();
+        private AnimalDBContext animalDBContext = new();
 
-        public DataProvider()
+        public DBProvider()
         {
         }
 
         public async Task<ICollection<TableAnimal>> GetDataFromDB()
         {
-            return await Task.Run(() => dbContext.TableAnimals.ToList());
+            return await Task.Run(() => animalDBContext.TableAnimals.ToList());
         }
     }
 }

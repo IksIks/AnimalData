@@ -1,6 +1,4 @@
-﻿using AnimalData.DBContext;
-using AnimalData.Model;
-using System.Windows;
+﻿using System.Windows;
 
 namespace AnimalData
 {

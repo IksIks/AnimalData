@@ -8,14 +8,14 @@ namespace AnimalData.ViewModel
 {
     internal class MainWindowViewModel
     {
-        private readonly DataProvider dbProvider;
+        private readonly DBProvider dbProvider;
 
         public ObservableCollection<ChordalType> AnimalTypes { get; set; }
 
         public MainWindowViewModel()
         {
+            dbProvider = new DBProvider();
             GetDataFromDBCommand = new LambdaCommand(OnGetDataFromDBCommandExecuted, CanGetDataFromDBCommandExecute);
-            dbProvider = new DataProvider();
         }
 
         public ICommand GetDataFromDBCommand { get; }
