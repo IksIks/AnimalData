@@ -1,7 +1,6 @@
-﻿using AnimalData.DBdataProvider;
-using AnimalData.Infrastructure.Command;
+﻿using AnimalData.Command;
+using AnimalData.DBdataProvider;
 using AnimalData.Model.BaseClass;
-using AnimalData.View;
 using AnimalData.ViewModel.Base;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
@@ -28,12 +27,9 @@ namespace AnimalData.ViewModel
 
         public MainWindowViewModel()
         {
-            dbProvider = new DataProvider();
             GetDataFromDBCommand = new LambdaCommand(OnGetDataFromDBCommandExecuted, CanGetDataFromDBCommandExecute);
-            AddNewAnimalCommand = new LambdaCommand(OnAddNewAnimalCommandExecuted, CanAddNewAnimalCommandExecute);
+            dbProvider = new DataProvider();
         }
-
-        #region Команда загрузки базы
 
         public ICommand GetDataFromDBCommand { get; }
 
@@ -46,22 +42,6 @@ namespace AnimalData.ViewModel
         {
             AnimalTypes = new ObservableCollection<ChordalType>(await dbProvider.GetDataFromDB());
             ConnectionState = "Green";
-        }
-
-        #endregion Команда загрузки базы
-
-        public ICommand AddNewAnimalCommand { get; }
-
-        private bool CanAddNewAnimalCommandExecute(object p)
-        {
-            // if (AnimalTypes.Count == 0) return false;
-            return true;
-        }
-
-        private void OnAddNewAnimalCommandExecuted(object p)
-        {
-            AddNewAnimal AddNewAnimalWindow = new AddNewAnimal();
-            AddNewAnimalWindow.ShowDialog();
         }
     }
 }

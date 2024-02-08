@@ -1,4 +1,4 @@
-﻿namespace AnimalData.Infrastructure.Command
+﻿namespace AnimalData.Command
 {
     internal class LambdaCommand : CommandBase
     {

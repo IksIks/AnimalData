@@ -1,5 +1,5 @@
-﻿using AnimalData.Connection;
-using AnimalData.Connection.ConfigurationDB;
+﻿using AnimalData.ConfigurationDB;
+using AnimalData.Connection;
 using AnimalData.Model.BaseClass;
 using Microsoft.EntityFrameworkCore;
 

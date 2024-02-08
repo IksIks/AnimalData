@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
 
-namespace AnimalData.Infrastructure.Command
+namespace AnimalData.Command
 {
     internal abstract class CommandBase : ICommand
     {
