@@ -7,6 +7,8 @@ namespace AnimalData.DBdataProvider
     {
         private AnimalDBContext? dbContext;
 
+        internal static event Action DataChange;
+
         public DataProvider()
         {
             dbContext = new AnimalDBContext();
@@ -26,6 +28,17 @@ namespace AnimalData.DBdataProvider
             {
                 dbContext.TableAnimals.Add(animal as TableAnimal);
                 dbContext.SaveChanges();
+                DataChange.Invoke();
+            }
+        }
+
+        public void DeleteAnimalFromDB(ChordalType animal)
+        {
+            using (dbContext = new AnimalDBContext())
+            {
+                dbContext.TableAnimals.Remove(animal as TableAnimal);
+                dbContext.SaveChanges();
+                DataChange?.Invoke();
             }
         }
     }

@@ -33,10 +33,11 @@
             </Grid.ColumnDefinitions>
             <UniformGrid Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Columns="1">
                 <Button Content="Добавить жвотное" Margin="0,0,0,10" Command="{Binding AddNewAnimalCommand}" />
-                <Button Content="Удалить животное" Margin="0,0,0,10" />
-                <Button Content="Изменить данные" Margin="0,0,0,10" />
+                <Button Content="Удалить животное" Margin="0,0,0,10" Command="{Binding DeleteAnimalCommand}"
+                        CommandParameter="{Binding ElementName=DataGridAnimalList, Path=SelectedItem}" />
+                <Button Content="Изменить данные" Margin="0,0,0,10" Command="{Binding ChangeAnimalDataCommand}" />
             </UniformGrid>
-            <DataGrid Grid.Column="1" Background="Beige" ItemsSource="{Binding AnimalTypes}" AutoGenerateColumns="False" FrozenColumnCount="4"
+            <DataGrid x:Name="DataGridAnimalList" Grid.Column="1" Background="Beige" ItemsSource="{Binding AnimalTypes}" AutoGenerateColumns="False" FrozenColumnCount="4"
                       SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="50" />

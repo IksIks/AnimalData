@@ -14,9 +14,9 @@ namespace AnimalData
 
             //using (AnimalDBContext t = new())
             //{
-            //    t.TableAnimals.Add(new Bird { AnimalName = "Bird", LifeExpectancy = 8, Weight = 7 });
-            //    t.TableAnimals.Add(new Mammal { AnimalName = "Mammal", LifeExpectancy = 4, Weight = 3 });
-            //    t.TableAnimals.Add(new Amphibian { AnimalName = "Amphibian", LifeExpectancy = 4, Weight = 3 });
+            //    t.TableAnimals.Add(new Bird("Дрозд", 8, 7));
+            //    t.TableAnimals.Add(new Mammal("Слон", 4, 3));
+            //    t.TableAnimals.Add(new Amphibian("Крокодил", 4, 3));
 
             //    t.SaveChanges();
             //}

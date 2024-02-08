@@ -2,6 +2,7 @@
 using AnimalData.Factory;
 using AnimalData.Infrastructure.Command;
 using AnimalData.ViewModel.Base;
+using System.Windows;
 using System.Windows.Input;
 
 namespace AnimalData.ViewModel
@@ -46,7 +47,12 @@ namespace AnimalData.ViewModel
             animalFactory = new AnimalFactory();
             dataProvider = new DataProvider();
             AddAnimalToDBCommand = new LambdaCommand(OnAddAnimalToDBCommandExecuted, CanAddAnimalToDBCommandExecute);
+            CloseWindowAddNewAnimalCommand = new LambdaCommand(OnCloseWindowAddNewAnimalCommandExecuted, CanCloseWindowAddNewAnimalCommandExecute);
         }
+
+        //---------------------------------------------------------------------------------------------
+
+        #region Добавление нового животного
 
         public ICommand AddAnimalToDBCommand { get; }
 
@@ -62,6 +68,19 @@ namespace AnimalData.ViewModel
         {
             var animal = animalFactory.GetNewAnimal(SelectedItemComboBox, AnimalName, LifeExpectancy, Weight);
             dataProvider.AddToDB(animal);
+        }
+
+        #endregion Добавление нового животного
+
+        //------------------------------------------------------------------------------
+
+        public ICommand CloseWindowAddNewAnimalCommand { get; }
+
+        private bool CanCloseWindowAddNewAnimalCommandExecute(object p) => true;
+
+        private void OnCloseWindowAddNewAnimalCommandExecuted(object p)
+        {
+            Application.Current.Windows[1].Close();
         }
     }
 }

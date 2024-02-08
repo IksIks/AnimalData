@@ -5,25 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AnimalData.View"
         xmlns:vm="clr-namespace:AnimalData.ViewModel"
-        MaxHeight="300" MaxWidth="210" MinHeight="300" MinWidth="210" WindowStartupLocation="CenterScreen">
+        MaxHeight="300" MaxWidth="250" MinHeight="300" MinWidth="250" WindowStartupLocation="CenterScreen">
     <Window.DataContext>
         <vm:AddNewAnimalViewModel />
     </Window.DataContext>
     <StackPanel Margin="5" Background="Beige">
         <Label Content="Название животного" FontWeight="Bold" FontSize="14" />
-        <TextBox Text="{Binding AnimalName}" Background="LightGray" FontSize="14" />
+        <TextBox Text="{Binding AnimalName}" Background="LightGray" FontSize="14" FontWeight="Bold" />
         <Label Content="Срок жизни, лет" FontWeight="Bold" FontSize="14" />
         <TextBox Text="{Binding LifeExpectancy}" Background="LightGray" FontSize="14" />
         <Label Content="Вес, кг" FontWeight="Bold" FontSize="14" />
         <TextBox Text="{Binding Weight}" Background="LightGray" FontSize="14" />
-        <ComboBox ItemsSource="{Binding AnimalType}" SelectedItem="{Binding SelectedItemComboBox}" />
+        <ComboBox ItemsSource="{Binding AnimalType}" SelectedItem="{Binding SelectedItemComboBox}" Margin="0,5,0,0" />
         <Grid Margin="0,6,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="10*" />
                 <ColumnDefinition Width="10*" />
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Content="Добавить" Command="{Binding AddAnimalToDBCommand}" />
-            <Button Grid.Column="1" Content="Отменить" />
+            <Button Grid.Column="0" Content="Добавить" Margin="2" Command="{Binding AddAnimalToDBCommand}" Background="Red" />
+            <Button Grid.Column="1" Content="Отменить" Margin="2" Command="{Binding CloseWindowAddNewAnimalCommand}" />
         </Grid>
     </StackPanel>
 </Window>

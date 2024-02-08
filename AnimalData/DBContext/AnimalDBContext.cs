@@ -24,7 +24,8 @@ namespace AnimalData.DBContext
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            new TableAnimalConfig().Configure(modelBuilder.Entity<TableAnimal>());
+            //new TableAnimalConfig().Configure(modelBuilder.Entity<TableAnimal>());
+            modelBuilder.ApplyConfiguration(new TableAnimalConfig());
         }
     }
 }
