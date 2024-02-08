@@ -32,7 +32,7 @@
                 <ColumnDefinition Width="129*" />
             </Grid.ColumnDefinitions>
             <UniformGrid Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Columns="1">
-                <Button Content="Добавить жвотное" Margin="0,0,0,10" />
+                <Button Content="Добавить жвотное" Margin="0,0,0,10" Command="{Binding AddNewAnimalCommand}" />
                 <Button Content="Удалить животное" Margin="0,0,0,10" />
                 <Button Content="Изменить данные" Margin="0,0,0,10" />
             </UniformGrid>

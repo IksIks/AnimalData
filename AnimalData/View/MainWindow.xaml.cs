@@ -1,5 +1,7 @@
 ﻿using AnimalData.DBContext;
 using AnimalData.Model;
+using AnimalData.Model.BaseClass;
+using System.Reflection;
 using System.Windows;
 
 namespace AnimalData
