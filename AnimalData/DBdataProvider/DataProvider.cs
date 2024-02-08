@@ -9,6 +9,7 @@ namespace AnimalData.DBdataProvider
 
         public DataProvider()
         {
+            dbContext = new AnimalDBContext();
         }
 
         public async Task<ICollection<TableAnimal>> GetDataFromDB()
@@ -16,6 +17,15 @@ namespace AnimalData.DBdataProvider
             using (dbContext = new AnimalDBContext())
             {
                 return await Task.Run(() => dbContext.TableAnimals.ToList());
+            }
+        }
+
+        public void AddToDB(ChordalType animal)
+        {
+            using (dbContext = new AnimalDBContext())
+            {
+                dbContext.TableAnimals.Add(animal as TableAnimal);
+                dbContext.SaveChanges();
             }
         }
     }

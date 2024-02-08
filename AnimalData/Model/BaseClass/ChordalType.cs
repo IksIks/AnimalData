@@ -9,5 +9,12 @@
         public byte LifeExpectancy { get; set; }
 
         public int Weight { get; set; }
+
+        public ChordalType(string animalName, byte lifeExpectancy, int weight)
+        {
+            AnimalName = animalName;
+            LifeExpectancy = lifeExpectancy;
+            Weight = weight;
+        }
     }
 }
