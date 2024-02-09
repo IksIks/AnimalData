@@ -1,10 +1,10 @@
-﻿<Window x:Class="AnimalData.View.AddNewAnimal"
+﻿<Window x:Class="AnimalData.View.ChangeAnimalData"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" mc:Ignorable="d"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AnimalData.View"
-        xmlns:vm="clr-namespace:AnimalData.ViewModel"
+         xmlns:vm="clr-namespace:AnimalData.ViewModel"
         MaxHeight="300" MaxWidth="250" MinHeight="300" MinWidth="250" WindowStartupLocation="CenterScreen">
     <Window.DataContext>
         <vm:AddNewOrChangeAnimalViewModel />
@@ -22,7 +22,7 @@
                 <ColumnDefinition Width="10*" />
                 <ColumnDefinition Width="10*" />
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Content="Добавить" Margin="2" Command="{Binding AddAnimalToDBCommand}" Background="Red" />
+            <Button Grid.Column="0" Content="Изменить" Margin="2" Command="{Binding ChangeAnimalDataCommand}" Background="Red" />
             <Button Grid.Column="1" Content="Отменить" Margin="2" Command="{Binding CloseWindowCommand}" />
         </Grid>
     </StackPanel>

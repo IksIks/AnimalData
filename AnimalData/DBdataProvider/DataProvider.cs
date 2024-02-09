@@ -1,5 +1,6 @@
 ﻿using AnimalData.DBContext;
 using AnimalData.Model.BaseClass;
+using System.Linq;
 
 namespace AnimalData.DBdataProvider
 {
@@ -18,7 +19,7 @@ namespace AnimalData.DBdataProvider
         {
             using (dbContext = new AnimalDBContext())
             {
-                return await Task.Run(() => dbContext.TableAnimals.ToList());
+                return await Task.Run(() => dbContext.TableAnimals.OrderBy(a => a.Id).ToList());
             }
         }
 
@@ -37,6 +38,16 @@ namespace AnimalData.DBdataProvider
             using (dbContext = new AnimalDBContext())
             {
                 dbContext.TableAnimals.Remove(animal as TableAnimal);
+                dbContext.SaveChanges();
+                DataChange?.Invoke();
+            }
+        }
+
+        public void UpdateAnimalData(ChordalType animal)
+        {
+            using (dbContext = new AnimalDBContext())
+            {
+                dbContext.TableAnimals.Update((animal as TableAnimal));
                 dbContext.SaveChanges();
                 DataChange?.Invoke();
             }

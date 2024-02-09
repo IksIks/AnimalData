@@ -2,7 +2,7 @@
 {
     internal class TableAnimal : ChordalType
     {
-        public TableAnimal(string animalName, byte lifeExpectancy, int weight) : base(animalName, lifeExpectancy, weight)
+        public TableAnimal(int id, string animalName, byte lifeExpectancy, int weight) : base(id, animalName, lifeExpectancy, weight)
         {
         }
     }

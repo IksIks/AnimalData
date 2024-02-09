@@ -1,14 +1,16 @@
 ﻿using AnimalData.DBdataProvider;
 using AnimalData.Factory;
 using AnimalData.Infrastructure.Command;
+using AnimalData.Model.BaseClass;
 using AnimalData.ViewModel.Base;
 using System.Windows;
 using System.Windows.Input;
 
 namespace AnimalData.ViewModel
 {
-    internal class AddNewAnimalViewModel : ViewModelBase
+    internal class AddNewOrChangeAnimalViewModel : ViewModelBase
     {
+        private int id;
         private string animalName;
         private byte lifeExpectancy;
         private int weight;
@@ -41,18 +43,28 @@ namespace AnimalData.ViewModel
             get { return animalType; }
         }
 
-        public AddNewAnimalViewModel()
+        public AddNewOrChangeAnimalViewModel()
         {
             animalType = new() { "Млекопитающие", "Птицы", "Земноводные", "Новый неизвестный тип" };
             animalFactory = new AnimalFactory();
             dataProvider = new DataProvider();
+            MainWindowViewModel.ChangeAnimalDataEvent += MainWindowViewModel_ChangeAnimalDataEvent;
             AddAnimalToDBCommand = new LambdaCommand(OnAddAnimalToDBCommandExecuted, CanAddAnimalToDBCommandExecute);
-            CloseWindowAddNewAnimalCommand = new LambdaCommand(OnCloseWindowAddNewAnimalCommandExecuted, CanCloseWindowAddNewAnimalCommandExecute);
+            CloseWindowCommand = new LambdaCommand(OnCloseWindowCommandExecuted, CanCloseWindowCommandExecute);
+            ChangeAnimalDataCommand = new LambdaCommand(OnChangeAnimalDataCommandExecuted, CanChangeAnimalDataCommandExecute);
+        }
+
+        private void MainWindowViewModel_ChangeAnimalDataEvent(ChordalType animal)
+        {
+            id = animal.Id;
+            AnimalName = animal.AnimalName;
+            LifeExpectancy = animal.LifeExpectancy;
+            Weight = animal.Weight;
         }
 
         //---------------------------------------------------------------------------------------------
 
-        #region Добавление нового животного
+        #region Команда добавление нового животного
 
         public ICommand AddAnimalToDBCommand { get; }
 
@@ -68,18 +80,42 @@ namespace AnimalData.ViewModel
         {
             var animal = animalFactory.GetNewAnimal(SelectedItemComboBox, AnimalName, LifeExpectancy, Weight);
             dataProvider.AddToDB(animal);
+            Application.Current.Windows[1].Close();
         }
 
-        #endregion Добавление нового животного
+        #endregion Команда добавление нового животного
 
         //------------------------------------------------------------------------------
 
-        public ICommand CloseWindowAddNewAnimalCommand { get; }
+        #region Команда закрытия окна
 
-        private bool CanCloseWindowAddNewAnimalCommandExecute(object p) => true;
+        public ICommand CloseWindowCommand { get; }
 
-        private void OnCloseWindowAddNewAnimalCommandExecuted(object p)
+        private bool CanCloseWindowCommandExecute(object p) => true;
+
+        private void OnCloseWindowCommandExecuted(object p)
         {
+            Application.Current.Windows[1].Close();
+        }
+
+        #endregion Команда закрытия окна
+
+        //--------------------------------------------------------------------------------
+
+        public ICommand ChangeAnimalDataCommand { get; }
+
+        private bool CanChangeAnimalDataCommandExecute(object p)
+        {
+            if (String.IsNullOrEmpty(AnimalName) || LifeExpectancy <= 0
+                                                 || Weight <= 0
+                                                 || String.IsNullOrEmpty(SelectedItemComboBox)) return false;
+            return true;
+        }
+
+        private void OnChangeAnimalDataCommandExecuted(object p)
+        {
+            var animal = animalFactory.GetNewAnimal(SelectedItemComboBox, AnimalName, LifeExpectancy, Weight, id);
+            dataProvider.UpdateAnimalData(animal);
             Application.Current.Windows[1].Close();
         }
     }

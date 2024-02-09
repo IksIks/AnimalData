@@ -35,9 +35,11 @@
                 <Button Content="Добавить жвотное" Margin="0,0,0,10" Command="{Binding AddNewAnimalCommand}" />
                 <Button Content="Удалить животное" Margin="0,0,0,10" Command="{Binding DeleteAnimalCommand}"
                         CommandParameter="{Binding ElementName=DataGridAnimalList, Path=SelectedItem}" />
-                <Button Content="Изменить данные" Margin="0,0,0,10" Command="{Binding ChangeAnimalDataCommand}" />
+                <Button Content="Изменить данные" Margin="0,0,0,10" Command="{Binding ChangeAnimalDataCommand}"
+                        CommandParameter="{Binding ElementName=DataGridAnimalList, Path=SelectedItem}" />
             </UniformGrid>
-            <DataGrid x:Name="DataGridAnimalList" Grid.Column="1" Background="Beige" ItemsSource="{Binding AnimalTypes}" AutoGenerateColumns="False" FrozenColumnCount="4"
+            <DataGrid x:Name="DataGridAnimalList" Grid.Column="1" Background="Beige" ItemsSource="{Binding AnimalTypes}"
+                      AutoGenerateColumns="False" FrozenColumnCount="4"
                       SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="50" />

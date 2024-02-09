@@ -10,6 +10,8 @@ namespace AnimalData.ViewModel
 {
     internal class MainWindowViewModel : ViewModelBase
     {
+        public static event Action<ChordalType> ChangeAnimalDataEvent;
+
         private DataProvider dbProvider;
         private ObservableCollection<ChordalType>? animalTypes;
         private string connectionState = "Red";
@@ -33,6 +35,7 @@ namespace AnimalData.ViewModel
             GetDataFromDBCommand = new LambdaCommand(OnGetDataFromDBCommandExecuted, CanGetDataFromDBCommandExecute);
             AddNewAnimalCommand = new LambdaCommand(OnAddNewAnimalCommandExecuted, CanAddNewAnimalCommandExecute);
             DeleteAnimalCommand = new LambdaCommand(OnDeleteAnimalCommandExecuted, CanDeleteAnimalCommandExecute);
+            ChangeAnimalDataCommand = new LambdaCommand(OnChangeAnimalDataCommandExecuted, CanChangeAnimalDataCommandExecute);
         }
 
         //-------------------------------------------------------------------------------------------------------
@@ -56,7 +59,7 @@ namespace AnimalData.ViewModel
 
         //-------------------------------------------------------------------------------------------------------
 
-        #region Добавление нового животного
+        #region Команда добавление нового животного
 
         public ICommand AddNewAnimalCommand { get; }
 
@@ -70,13 +73,16 @@ namespace AnimalData.ViewModel
         {
             AddNewAnimal AddNewAnimalWindow = new AddNewAnimal();
             DataProvider.DataChange += DbProvider_DataChange;
+
             AddNewAnimalWindow.ShowDialog();
             DataProvider.DataChange -= DbProvider_DataChange;
         }
 
-        #endregion Добавление нового животного
+        #endregion Команда добавление нового животного
 
         //-------------------------------------------------------------------------------------------------------
+
+        #region Команда удаления животного
 
         public ICommand DeleteAnimalCommand { get; }
 
@@ -93,10 +99,32 @@ namespace AnimalData.ViewModel
             DataProvider.DataChange -= DbProvider_DataChange;
         }
 
+        #endregion Команда удаления животного
+
         //------------------------------------------------------------------------------------------------------------------
 
+        #region Команда обновления данных о животном
+
         public ICommand ChangeAnimalDataCommand { get; }
-        //private bool
+
+        private bool CanChangeAnimalDataCommandExecute(Object p)
+        {
+            if (AnimalTypes.Any() && p is ChordalType) return true;
+            return false;
+        }
+
+        private void OnChangeAnimalDataCommandExecuted(Object p)
+        {
+            DataProvider.DataChange += DbProvider_DataChange;
+            ChangeAnimalData ChangeAnimalDataWindow = new();
+            ChangeAnimalDataEvent?.Invoke(p as ChordalType);
+            ChangeAnimalDataWindow.ShowDialog();
+            DataProvider.DataChange -= DbProvider_DataChange;
+        }
+
+        #endregion Команда обновления данных о животном
+
+        //------------------------------------------------------------------------------------------------------------------
 
         private async void DbProvider_DataChange()
         {

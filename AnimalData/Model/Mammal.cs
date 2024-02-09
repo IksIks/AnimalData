@@ -4,7 +4,7 @@ namespace AnimalData.Model
 {
     internal class Mammal : TableAnimal
     {
-        public Mammal(string animalName, byte lifeExpectancy, int weight) : base(animalName, lifeExpectancy, weight)
+        public Mammal(int id, string animalName, byte lifeExpectancy, int weight) : base(id, animalName, lifeExpectancy, weight)
         {
         }
     }
