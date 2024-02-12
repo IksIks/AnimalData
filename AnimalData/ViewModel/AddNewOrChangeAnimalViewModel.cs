@@ -13,7 +13,7 @@ namespace AnimalData.ViewModel
         private int id;
         private string animalName;
         private byte lifeExpectancy;
-        private int weight;
+        private double weight;
         private DataProvider dataProvider;
         private AnimalFactory animalFactory;
         private readonly List<string> animalType;
@@ -32,7 +32,7 @@ namespace AnimalData.ViewModel
             set { Set(ref lifeExpectancy, value); }
         }
 
-        public int Weight
+        public double Weight
         {
             get { return weight; }
             set { Set(ref weight, value); }

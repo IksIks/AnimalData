@@ -14,9 +14,6 @@
             <MenuItem Header="Меню">
                 <MenuItem Header="Загрузить БД" Command="{Binding GetDataFromDBCommand}" />
             </MenuItem>
-            <MenuItem Header="Опции">
-                <MenuItem Header="Сохранить как..." />
-            </MenuItem>
         </Menu>
         <StatusBar DockPanel.Dock="Bottom" Background="LightGray">
             <StatusBarItem>

@@ -5,7 +5,7 @@ namespace AnimalData.Factory
 {
     internal class AnimalFactory
     {
-        public ChordalType GetNewAnimal(string animalType, string animalName, byte lifeExpectancy, int weight, int id = 0)
+        public ChordalType GetNewAnimal(string animalType, string animalName, byte lifeExpectancy, double weight, int id = 0)
         {
             switch (animalType)
             {

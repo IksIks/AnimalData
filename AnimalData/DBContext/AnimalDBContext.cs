@@ -30,7 +30,7 @@ namespace AnimalData.DBContext
                 (
                     new TableAnimal(1, "Слон", 100, 2000, "Млекопитающие"),
                     new TableAnimal(2, "Голубь", 10, 1, "Птицы"),
-                    new TableAnimal(3, "Змея", 25, 1, "Земноводные")
+                    new TableAnimal(3, "Змея", 25, 1.5, "Земноводные")
                 );
         }
     }
