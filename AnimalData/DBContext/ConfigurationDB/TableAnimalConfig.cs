@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace AnimalData.Connection.ConfigurationDB
+namespace AnimalData.DBContext.ConfigurationDB
 {
     internal class TableAnimalConfig : IEntityTypeConfiguration<TableAnimal>
     {

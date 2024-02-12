@@ -1,5 +1,5 @@
 ﻿using AnimalData.Connection;
-using AnimalData.Connection.ConfigurationDB;
+using AnimalData.DBContext.ConfigurationDB;
 using AnimalData.Model.BaseClass;
 using Microsoft.EntityFrameworkCore;
 
@@ -26,6 +26,11 @@ namespace AnimalData.DBContext
             base.OnModelCreating(modelBuilder);
             //new TableAnimalConfig().Configure(modelBuilder.Entity<TableAnimal>());
             modelBuilder.ApplyConfiguration(new TableAnimalConfig());
+            modelBuilder.Entity<TableAnimal>().HasData
+                (
+                    new TableAnimal(1, "Слон", 100, 2000),
+                    new(2, "Голубь", 10, 1)
+                );
         }
     }
 }
