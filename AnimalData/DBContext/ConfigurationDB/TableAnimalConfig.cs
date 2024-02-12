@@ -12,6 +12,7 @@ namespace AnimalData.DBContext.ConfigurationDB
             builder.Property(a => a.AnimalName).IsRequired().HasColumnName("animal_name");
             builder.Property(a => a.LifeExpectancy).IsRequired().HasColumnName("life_expectancy");
             builder.Property(a => a.Weight).IsRequired().HasColumnName("weight");
+            builder.Property(a => a.AnimalType).IsRequired().HasColumnName("anymal_type");
         }
     }
 }

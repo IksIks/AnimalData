@@ -10,12 +10,15 @@
 
         public int Weight { get; set; }
 
-        public ChordalType(int id, string animalName, byte lifeExpectancy, int weight)
+        public string AnimalType { get; set; }
+
+        public ChordalType(int id, string animalName, byte lifeExpectancy, int weight, string animalType)
         {
             Id = id;
             AnimalName = animalName;
             LifeExpectancy = lifeExpectancy;
             Weight = weight;
+            AnimalType = animalType;
         }
     }
 }
